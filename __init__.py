@@ -33,9 +33,7 @@ class ImageRemoveBackgroundRembg:
             image = remove(image)
 
             # convert to tensor
-            out_image = np.array(image.convert("RGB")).astype(np.float32) / 255.0
-            out_image = torch.from_numpy(out_image).unsqueeze(0)
-            total_images.append(out_image)
+            total_images.append(torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0))
 
 
         total_images = torch.cat(total_images, 0)
